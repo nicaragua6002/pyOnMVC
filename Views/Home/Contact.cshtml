@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Resultados de EDA";
+}
+
+<h2>Resultados de EDA <a href="@Url.Action("Descargar", "Home", new { urlDescarga = ViewBag.urlDescarga })" class="btn btn-primary" download="EDA.zip">Descargar Resultados</a> </h2>
+<p>@ViewBag.Message  @ViewBag.urlDescarga</p>
+@Html.Raw(ViewBag.ProductTable)
+@Html.Raw(ViewBag.SalesTable)
+@Html.Raw(ViewBag.ProductDescription)
+@Html.Raw(ViewBag.SalesDescription)
+@Html.Raw(ViewBag.ProductCategoryCount)
+@Html.Raw(ViewBag.SalesScatterPlot)
