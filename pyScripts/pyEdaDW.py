@@ -1,16 +1,15 @@
 ﻿import pandas as pd
 import matplotlib.pyplot as plt
-import pyodbc
+from sqlalchemy import create_engine
 import calendar
 import numpy as np
+from io import StringIO
 
-# Conectar a la base de datos usando autenticación integrada de Windows
-conn = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};'
-    'SERVER=localhost;'
-    'DATABASE=VentasDW;'
-    'Trusted_Connection=yes;'
-)
+# Crea la cadena de conexión para SQLAlchemy
+connection_string = 'mssql+pyodbc://@localhost/VentasDW?driver=ODBC+Driver+17+for+SQL+Server'
+
+# Crear el motor de SQLAlchemy
+engine = create_engine(connection_string)
 
 # Query para obtener los datos de ventas con las dimensiones
 query = """
@@ -35,14 +34,13 @@ JOIN
     dbo.DimSalesRegion dsr ON fs.RegionID = dsr.RegionID
 """
 
-# Leer los datos en un DataFrame de pandas
-df = pd.read_sql(query, conn)
+# Leer los datos en un DataFrame de pandas usando el motor de SQLAlchemy
+df = pd.read_sql(query, engine)
 
 # Mostrar las primeras filas del DataFrame
 print(df.head().to_html(index=False, classes='table table-striped table-bordered'))
 
 # Resumen estadístico de las columnas numéricas
-print(df.describe())
+print(df.describe().to_html(index=False, classes='table table-striped table-bordered'))
 
-# Información sobre el DataFrame
-print(df.info())
+
