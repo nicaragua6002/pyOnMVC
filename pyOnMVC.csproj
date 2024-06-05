@@ -135,9 +135,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\scriptDW.sql" />
     <Content Include="pyScripts\explorar.py" />
     <Content Include="pyScripts\pyCuboOLAP.py" />
     <Content Include="pyScripts\pyDescargar.py" />
+    <Content Include="pyScripts\pyEdaDW.py" />
+    <Content Include="pyScripts\pyIndicador.py" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -172,7 +175,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\pyImg\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
